@@ -1,5 +1,8 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+from display_widget import *
+from sql_connection import *
+from PyQt4.QtSql import *
 import sys
 
 class Window(QMainWindow):
@@ -28,9 +31,29 @@ class Window(QMainWindow):
 
         self.open_database.triggered.connect(self.open_connection)
 
-def open_connection(self):
-    path = QTitleDialog.getOpenFileName()
-    print(path)
+        self.database
+
+        
+        
+    def open_connection(self):
+        path = QFileDialog.getOpenFileName()
+        print(path)
+        self.connection = SQLConnection(path)
+        ok = self.connection.open_database()
+        print(ok)
+
+    def display_products(self):
+        if not hasattr(self,'display_widget'):
+            self.display_widget = DisplayWidget()
+        self.setCentralWidget(self.display_widget)
+        query = self.connection.find_producs_by_number((1,))
+        self.display_widget.show_results(query)
+
+    def show_product_table(self):
+        if not hasattr(self,'display_widget'):
+            pass
+        #I have notes on the code on this!!
+            
 
 
 if __name__ == "__main__":
