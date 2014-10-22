@@ -18,7 +18,7 @@ class SQLConnection:
     
     def close_database(self):
         self.db.close()
-        QSqlDatabase.removeDatabase("conn")
+        QSqlDatabase.removeDatabase("Conn")
 
     def closeEvent(self,event):
         self.close_database()

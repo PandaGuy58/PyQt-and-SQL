@@ -13,14 +13,23 @@ class Window(QMainWindow):
         #create actions
         self.open_database = QAction("Open Database",self)
         self.close_database = QAction("Close Database",self)
-
+        self.find_products = QAction("Find Products",self)
+        self.show_products = QAction("Show Products",self)
+        
+        #add menu to a bar
         self.menu = QMenuBar()
         self.database_toolbar = QToolBar()
-
         self.database_menu = self.menu.addMenu("Database")
-
+        self.products_toolbar = QToolBar()
+        self.products_menu = self.menu.addMenu("Products")
+        
+        #add actions o menu
         self.database_menu.addAction(self.open_database)
         self.database_menu.addAction(self.close_database)
+
+        self.products_menu.addAction(self.find_products)
+        self.products_menu.addAction(self.show_products)
+        
 
         self.database_toolbar.addAction(self.open_database)
         self.database_toolbar.addAction(self.close_database)
@@ -31,8 +40,6 @@ class Window(QMainWindow):
 
         self.open_database.triggered.connect(self.open_connection)
 
-        self.database
-
         
         
     def open_connection(self):
@@ -42,6 +49,9 @@ class Window(QMainWindow):
         ok = self.connection.open_database()
         print(ok)
 
+    def close_connection(self):
+        pass
+
     def display_products(self):
         if not hasattr(self,'display_widget'):
             self.display_widget = DisplayWidget()
@@ -50,9 +60,7 @@ class Window(QMainWindow):
         self.display_widget.show_results(query)
 
     def show_product_table(self):
-        if not hasattr(self,'display_widget'):
-            pass
-        #I have notes on the code on this!!
+        pass
             
 
 
