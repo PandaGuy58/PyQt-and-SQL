@@ -26,6 +26,6 @@ class SQLConnection:
     def find_products_by_number(self,values):
         query = QSqlQuery()
         query.prepare("""SELECT * FROM Product WHERE ProductID = ?""")
-        query.addBindValue(Values[0])
+        query.addBindValue(values[0])
         query.exec_()
         return query

@@ -40,6 +40,7 @@ class Window(QMainWindow):
 
         self.open_database.triggered.connect(self.open_connection)
 
+        self.show_products.triggered.connect(self.display_products)
         
         
     def open_connection(self):
@@ -48,7 +49,7 @@ class Window(QMainWindow):
         self.connection = SQLConnection(path)
         ok = self.connection.open_database()
         print(ok)
-
+        
     def close_connection(self):
         pass
 
@@ -56,7 +57,7 @@ class Window(QMainWindow):
         if not hasattr(self,'display_widget'):
             self.display_widget = DisplayWidget()
         self.setCentralWidget(self.display_widget)
-        query = self.connection.find_producs_by_number((1,))
+        query = self.connection.find_products_by_number((1,))
         self.display_widget.show_results(query)
 
     def show_product_table(self):
